@@ -44,13 +44,17 @@ void Grille::reset(){
 }
 
 void Grille::afficher(){
-	std::cout << "+";
+	std::cout << "  ";
+	for(int i=0;i<Grille::largeurGrille;i++){
+		std::cout << " " << i+1;
+	}
+	std::cout << "\n  +";
 	for (int j=0;j<2*Grille::largeurGrille-1;j++){
 		std::cout << "-";
 	}
 	std::cout << "+\n";
 	for (int i=0;i<Grille::longueurGrille;i++){
-		
+		std::cout << i+1 << "-";
 		for (int j=0;j<Grille::largeurGrille;j++){
 			std::cout << "|";
 			switch (Grille::grille[i][j]){
@@ -70,14 +74,14 @@ void Grille::afficher(){
 		
 		std::cout << "|\n";
 		if (i<Grille::longueurGrille-1){
-			std::cout << "|";
+			std::cout << "  |";
 			for (int j=0;j<2*Grille::largeurGrille-1;j++){
 				std::cout << "-";
 			}
 			std::cout << "|\n";
 		}
 	}
-	std::cout << "+";
+	std::cout << "  +";
 	for (int j=0;j<2*Grille::largeurGrille-1;j++){
 		std::cout << "-";
 	}
