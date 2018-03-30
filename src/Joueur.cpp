@@ -14,6 +14,7 @@ void Joueur::initialiserNom(){
 
 void Joueur::initialiserGrille(){
 	Joueur::grille.initialiserGrille();
+	
 }
 
 void Joueur::resetGrille(){
@@ -23,4 +24,9 @@ void Joueur::resetGrille(){
 void Joueur::tour(){
 	std::cout << "Tour de " << Joueur::nom << "\n";
 	Joueur::grille.afficher();
+	if (!Joueur::isIA){
+		std::cout << "Donner les coordonnees x et y (separe par un espace): ";
+		std::cin >> Joueur::x;
+		std::cin >> Joueur::y;
+	}
 }

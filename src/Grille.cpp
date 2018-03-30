@@ -2,8 +2,8 @@
 
 #include "Grille.hpp"
 
-int Grille::largeurGrille = 10;
-int Grille::longueurGrille = 10;
+int Grille::tailleHorizontal = 10;
+int Grille::tailleVertical = 10;
 
 Grille::Grille(){
 	
@@ -16,28 +16,27 @@ Grille::~Grille(){
 void Grille::initialiserGrille(){
 	do{
 		std::cout << "Donner la largeur de la grille : ";
-		std::cin >> Grille::largeurGrille;
-	}while(Grille::largeurGrille <=0);
+		std::cin >> Grille::tailleHorizontal;
+	}while(Grille::tailleHorizontal <=0);
 	do{
-		std::cout << "Donner la longueur de la grille : ";
-		std::cin >> Grille::longueurGrille;
-	}while(Grille::longueurGrille<=0);
+		std::cout << "Donner la hauteur de la grille : ";
+		std::cin >> Grille::tailleVertical;
+	}while(Grille::tailleVertical<=0);
 	
 	
 }
 
 void Grille::reset(){
 	
-	delete [] Grille::grille;
 	
-	std::cout << "Initialisation d'une grille de taille " << Grille::largeurGrille << " x " << Grille::longueurGrille << ".\n";
-	Grille::grille = new char* [Grille::longueurGrille];
-	for (int i=0;i<Grille::longueurGrille;i++){
-		Grille::grille[i] = new char [Grille::largeurGrille];
+	std::cout << "Initialisation d'une grille de taille " << Grille::tailleHorizontal << " x " << Grille::tailleVertical << ".\n";
+	Grille::grille = new char* [Grille::tailleVertical];
+	for (int i=0;i<Grille::tailleVertical;i++){
+		Grille::grille[i] = new char [Grille::tailleHorizontal];
 	}
 	
-	for (int i=0;i<Grille::longueurGrille;i++){
-		for (int j=0;j<Grille::largeurGrille;j++){
+	for (int i=0;i<Grille::tailleVertical;i++){
+		for (int j=0;j<Grille::tailleHorizontal;j++){
 			Grille::grille[i][j] = 0;
 		}
 	}
@@ -45,17 +44,17 @@ void Grille::reset(){
 
 void Grille::afficher(){
 	std::cout << "  ";
-	for(int i=0;i<Grille::largeurGrille;i++){
+	for(int i=0;i<Grille::tailleHorizontal;i++){
 		std::cout << " " << i+1;
 	}
 	std::cout << "\n  +";
-	for (int j=0;j<2*Grille::largeurGrille-1;j++){
+	for (int j=0;j<2*Grille::tailleHorizontal-1;j++){
 		std::cout << "-";
 	}
 	std::cout << "+\n";
-	for (int i=0;i<Grille::longueurGrille;i++){
+	for (int i=0;i<Grille::tailleVertical;i++){
 		std::cout << i+1 << "-";
-		for (int j=0;j<Grille::largeurGrille;j++){
+		for (int j=0;j<Grille::tailleHorizontal;j++){
 			std::cout << "|";
 			switch (Grille::grille[i][j]){
 				case 0:
@@ -73,16 +72,16 @@ void Grille::afficher(){
 		}
 		
 		std::cout << "|\n";
-		if (i<Grille::longueurGrille-1){
+		if (i<Grille::tailleVertical-1){
 			std::cout << "  |";
-			for (int j=0;j<2*Grille::largeurGrille-1;j++){
+			for (int j=0;j<2*Grille::tailleHorizontal-1;j++){
 				std::cout << "-";
 			}
 			std::cout << "|\n";
 		}
 	}
 	std::cout << "  +";
-	for (int j=0;j<2*Grille::largeurGrille-1;j++){
+	for (int j=0;j<2*Grille::tailleHorizontal-1;j++){
 		std::cout << "-";
 	}
 	std::cout << "+\n";

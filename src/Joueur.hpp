@@ -9,6 +9,8 @@ class Joueur{
 		std::string nom;
 		bool isIA;
 		Grille grille;
+		int nbBateauxTouches; // va etre incremente quand un des bateaux est touche pour facilite la verification de la fin de partie
+		int x, y;
 		
 	public:
 		Joueur();

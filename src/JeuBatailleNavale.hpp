@@ -19,6 +19,7 @@ class JeuBatailleNavale{
 	public:
 		JeuBatailleNavale();
 		void nouveauJeu();
+		bool checkFinJeu();
 		
 };
 

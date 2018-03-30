@@ -43,17 +43,34 @@ void JeuBatailleNavale::nouveauJeu(){
 			nouveauJeu();
 	}
 	if (choix != 'q'){
-		joueur1.initialiserGrille();
-		joueur1.resetGrille(); // on initialise avec 1 joueur car la taille de la grille est commune aux deux joueurs
-		joueur2.resetGrille(); // il suffit donc de remplir la grille de 0 pour chaque joueur
+		JeuBatailleNavale::joueur1.initialiserGrille();
+		JeuBatailleNavale::joueur1.resetGrille(); // on initialise avec 1 joueur car la taille de la grille est commune aux deux joueurs
+		JeuBatailleNavale::joueur2.resetGrille(); // il suffit donc de remplir la grille de 0 pour chaque joueur
 		bool fini = false;
 		int tour = 0;
 		while (!fini){
-			
-			tour = (tour+1)%2;
-			
-			fini = true;
+			if(tour==0){
+				JeuBatailleNavale::joueur1.tour();
+			}else{
+				JeuBatailleNavale::joueur2.tour();
+			}
+			tour = (tour+1)%2; // on passe au tour du joueur suivant
+			fini = JeuBatailleNavale::checkFinJeu();
 		}
+		// Si la partie est finie et que c'est le tour du joueur1 alors c'est que c'est suite
+		// au tour de joueur2 que la partie se termine. Donc c'est joueur2 qui a gagne. Et inversement.
+		// (c'est parce qu'on actualise 'tour' a la fin de la boucle while)
+		std::cout << "\n\n=============\n";
+		if (tour == 2){
+			std::cout << JeuBatailleNavale::joueur1.nom;
+		}else{
+			std::cout << JeuBatailleNavale::joueur2.nom;
+		}
+		std::cout << " a gagne la partie\n=============\n";
 	}
+	
+}
+
+bool JeuBatailleNavale::checkFinJeu(){
 	
 }
