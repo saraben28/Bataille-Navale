@@ -3,7 +3,7 @@ actor joueur1
 actor joueur2
 
 activate JeuBatailleNavale
-loop nbBateauRestant > 0
+loop nbBateauRestant > 0 ou sauvegarde
    JeuBatailleNavale -> joueur1 : placerBombe()
    joueur1 -> Grille : placer
    activate Grille
@@ -14,6 +14,8 @@ loop nbBateauRestant > 0
    activate Grille
    Grille -> joueur2 : afficherGrille()
    deactivate Grille
+   JeuBatailleNavale -> joueur1 : faireSauvegarde?()
+   joueur1 -> JeuBatailleNavale
 end
 JeuBatailleNavale -> joueur1 : finPartie()
 joueur1 -> JeuBatailleNavale
