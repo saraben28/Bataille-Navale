@@ -5,4 +5,5 @@ Joueur<--> JeuBatailleNavale
 Pion --> Grille
 Grille --> Joueur
 Grille --> JeuBatailleNavale
+
 @enduml
