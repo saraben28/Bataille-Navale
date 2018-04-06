@@ -1,0 +1,9 @@
+@startuml
+skinparam classAttributeIconSize 0 
+
+Bateau ..|> Pion
+Joueur<--> JeuBatailleNavale
+Pion --> Grille
+Grille --> Joueur
+Grille --> JeuBatailleNavale
+@enduml
