@@ -34,6 +34,7 @@ void Joueur::placementDesBateaux(char typeJeu){
 	}
 	
 	for(int i=0;i<Joueur::nbBateaux;i++){
+		std::cout << Joueur::nbBateaux-i << " bateaux a placer...\n";
 		ajoutBateau(&Joueur::bateaux[i]);
 	}
 }
@@ -56,8 +57,10 @@ void Joueur::ajoutBateau(Bateau *b){
 	char orientationInput;
 	bool orientation;
 	bool ok = false;
+	int tailleBateau = (*b).getTaille();
 	while(!ok){
 		Joueur::grille.afficher();
+		std::cout << "Bateau de taille " << tailleBateau << "\n";
 		do{
 			std::cout << "xExtremite : ";
 			std::cin >> xExtremite;
@@ -77,7 +80,7 @@ void Joueur::ajoutBateau(Bateau *b){
 		(*b).setxExtremite(xExtremite);
 		(*b).setyExtremite(yExtremite);
 		
-		int tailleBateau = (*b).getTaille();
+		
 		
 		int** coordonneesBateau = (*b).getCoordonneesCompletes();
 		
