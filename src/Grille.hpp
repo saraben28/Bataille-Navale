@@ -20,6 +20,9 @@ class Grille{
 		void initialiserGrille();
 		void afficher();
 		void reset();
+		bool fini();
+		
+		friend class Joueur;
 };
 
 #endif

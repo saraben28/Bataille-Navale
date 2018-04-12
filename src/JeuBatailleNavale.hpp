@@ -11,15 +11,14 @@ class JeuBatailleNavale{
 	
 	private:
 		Joueur joueur1, joueur2;
-		char nbJoueursHumains;
+		char nbJoueursHumains, typeJeu;
 		
 		void initialiserNomJoueur(char nbJoueurs);
-		
-		
+		void choisirTypeJeu();
+		bool checkFinJeu();
 	public:
 		JeuBatailleNavale();
 		void nouveauJeu();
-		bool checkFinJeu();
 		
 };
 

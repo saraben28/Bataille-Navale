@@ -46,6 +46,12 @@ void JeuBatailleNavale::nouveauJeu(){
 		JeuBatailleNavale::joueur1.initialiserGrille();
 		JeuBatailleNavale::joueur1.resetGrille(); // on initialise avec 1 joueur car la taille de la grille est commune aux deux joueurs
 		JeuBatailleNavale::joueur2.resetGrille(); // il suffit donc de remplir la grille de 0 pour chaque joueur
+		
+		choisirTypeJeu();
+		
+		JeuBatailleNavale::joueur1.placementDesBateaux(JeuBatailleNavale::typeJeu);
+		JeuBatailleNavale::joueur2.placementDesBateaux(JeuBatailleNavale::typeJeu);
+		
 		bool fini = false;
 		int tour = 0;
 		while (!fini){
@@ -71,6 +77,20 @@ void JeuBatailleNavale::nouveauJeu(){
 	
 }
 
+void JeuBatailleNavale::choisirTypeJeu(){
+	char choix;
+	std::cout << "\nCHOIX DU TYPE DE JEU\n";
+	do{
+		std::cout << "Type 1 ou 2 ? : ";
+		std::cin >> choix;
+	}while(choix != '1' && choix != '2');
+	if(choix == '1'){
+		JeuBatailleNavale::typeJeu = 1;
+	}else{
+		JeuBatailleNavale::typeJeu = 2;
+	}
+}
+
 bool JeuBatailleNavale::checkFinJeu(){
-	
+	return (JeuBatailleNavale::joueur1.grille.fini() || JeuBatailleNavale::joueur2.grille.fini());
 }

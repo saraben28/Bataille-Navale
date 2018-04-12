@@ -47,13 +47,16 @@ void Grille::afficher(){
 	for(int i=0;i<Grille::tailleHorizontal;i++){
 		std::cout << " " << i+1;
 	}
-	std::cout << "\n  +";
+	std::cout << "\n   +";
 	for (int j=0;j<2*Grille::tailleHorizontal-1;j++){
 		std::cout << "-";
 	}
 	std::cout << "+\n";
 	for (int i=0;i<Grille::tailleVertical;i++){
 		std::cout << i+1 << "-";
+		if(i+1<10){
+			std::cout << " "; // aligner a cause du caractere supplementaire de la dizaine
+		}
 		for (int j=0;j<Grille::tailleHorizontal;j++){
 			std::cout << "|";
 			switch (Grille::grille[i][j]){
@@ -73,16 +76,28 @@ void Grille::afficher(){
 		
 		std::cout << "|\n";
 		if (i<Grille::tailleVertical-1){
-			std::cout << "  |";
+			std::cout << "   |";
+			
 			for (int j=0;j<2*Grille::tailleHorizontal-1;j++){
 				std::cout << "-";
 			}
 			std::cout << "|\n";
 		}
 	}
-	std::cout << "  +";
+	std::cout << "   +";
 	for (int j=0;j<2*Grille::tailleHorizontal-1;j++){
 		std::cout << "-";
 	}
 	std::cout << "+\n";
+}
+
+bool Grille::fini(){
+	for (int i=0;i<Grille::tailleVertical;i++){
+		for(int j=0;j<Grille::tailleHorizontal;j++){
+			if(Grille::grille[i][j]==1){
+				return false;
+			}
+		}
+	}
+	return true;
 }

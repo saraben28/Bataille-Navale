@@ -7,6 +7,17 @@ class Bateau{
 		bool orientation; // 0=horizontal ; 1=vertical
 	public:
 		Bateau();
+		void setTaille(int taille);
+		void setxExtremite(int xExtremite);
+		void setyExtremite(int yExtremite);
+		void setOrientation(char orientationInput);
+		
+		bool getOrientation();
+		int getTaille();
+		int getxExtremite();
+		int getyExtremite();
+		
+		int** getCoordonneesCompletes();
 };
 
 #endif
