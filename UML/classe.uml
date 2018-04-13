@@ -61,7 +61,7 @@ class Bateau{
 }
 
 Bateau ..|> Pion
-Joueur<--> JeuBatailleNavale
+Joueur --> JeuBatailleNavale
 Pion --> Grille
 Grille --> Joueur
 Grille --> JeuBatailleNavale
