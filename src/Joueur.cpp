@@ -2,7 +2,6 @@
 
 #include "Joueur.hpp"
 
-
 Joueur::Joueur(){
 	Joueur::nom = "Joueur";
 	Joueur::nbBateaux = 3;
@@ -20,11 +19,12 @@ void Joueur::initialiserNom(){
 
 void Joueur::initialiserGrille(){
 	Joueur::grille.initialiserGrille();
-	
+	Joueur::grilleTentatives.initialiserGrille();
 }
 
 void Joueur::resetGrille(){
 	Joueur::grille.reset();
+	Joueur::grilleTentatives.reset();
 }
 
 void Joueur::placementDesBateaux(char typeJeu){
@@ -44,6 +44,8 @@ void Joueur::tour(){
 	Joueur::grille.afficher();
 	if (!Joueur::isIA){
 		// tour du joueur
+		std::cout << "Placer une bombe\n";
+		placerBombe();
 	}else{
 		// Tour de l'IA
 	}
@@ -134,4 +136,27 @@ bool Joueur::verifierPlace(int** coordonneesBateau, int taille){
 		}
 	}
 	return true;
+}
+
+void Joueur::placerBombe(){
+	int xBombe, yBombe;
+	do{
+		Joueur::grilleTentatives.afficher();
+		std::cout << "Coordonnee en x : ";
+		std::cin >> xBombe;
+		std::cout << "Coordonnee en y : ";
+		std::cin >> yBombe;
+	}while(xBombe<0 || xBombe>Joueur::grille.tailleHorizontal-1 || yBombe<0 || yBombe>Joueur::grille.tailleVertical-1);
+	
+	bool touche = jeu->joueurPlaceBombe(Joueur::nom ,xBombe, yBombe);
+	
+	if(touche){
+		std::cout << "Touche !\n";
+		Joueur::grilleTentatives.grille[yBombe][xBombe] = 4;
+		Joueur::grilleTentatives.afficher();
+	}else{
+		std::cout << "Plouf\n";
+		Joueur::grilleTentatives.grille[yBombe][xBombe] = 3;
+		Joueur::grilleTentatives.afficher();
+	}
 }

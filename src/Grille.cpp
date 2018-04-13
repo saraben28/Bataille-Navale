@@ -69,6 +69,12 @@ void Grille::afficher(){
 				case 2:
 					std::cout << "$";
 					break;
+				case 3:
+					std::cout << "-";
+					break;
+				case 4:
+					std::cout << "+";
+					break;
 				default:
 					std::cout << "#";
 			}
@@ -100,4 +106,8 @@ bool Grille::fini(){
 		}
 	}
 	return true;
+}
+
+char Grille::get(int x, int y){
+	return Grille::grille[y][x];
 }

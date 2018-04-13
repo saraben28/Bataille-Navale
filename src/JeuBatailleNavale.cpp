@@ -28,6 +28,8 @@ void JeuBatailleNavale::initialiserNomJoueur(char nbJoueurs){
 
 
 void JeuBatailleNavale::nouveauJeu(){
+	joueur1.jeu = this;
+	joueur2.jeu = this;
 	char choix = 0;
 	std::cout << "\n\n1-Joueur contre joueur\n2-Joueur contre IA\n3-IA contre IA\n> ";
 	std::cin >> choix;
@@ -93,4 +95,22 @@ void JeuBatailleNavale::choisirTypeJeu(){
 
 bool JeuBatailleNavale::checkFinJeu(){
 	return (JeuBatailleNavale::joueur1.grille.fini() || JeuBatailleNavale::joueur2.grille.fini());
+}
+
+bool JeuBatailleNavale::joueurPlaceBombe(std::string nomJoueur, int xBombe, int yBombe){
+	if(nomJoueur==JeuBatailleNavale::joueur1.nom){
+		if(JeuBatailleNavale::joueur2.grille.get(xBombe,xBombe) != 0){
+			return true;
+		}else{
+			return false;
+		}
+	}else if (nomJoueur==JeuBatailleNavale::joueur2.nom){
+		if(JeuBatailleNavale::joueur1.grille.get(xBombe,yBombe) != 0){
+			return true;
+		}else{
+			return false;
+		}
+	}else{
+		std::cout << "Erreur pas de joueur " << nomJoueur << "\n";
+	}
 }

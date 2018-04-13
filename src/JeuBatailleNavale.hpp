@@ -19,6 +19,7 @@ class JeuBatailleNavale{
 	public:
 		JeuBatailleNavale();
 		void nouveauJeu();
+		bool joueurPlaceBombe(std::string nomJoueur, int xBombe, int yBombe);
 		
 };
 

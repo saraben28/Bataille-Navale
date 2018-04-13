@@ -11,6 +11,8 @@ class Grille{
 		*	-0 : eau
 		*	-1 : bateau
 		*	-2 : bateau touche
+		*	-3 : tentative de bombe infructueuse
+		*	-4 : bombe ayant atteint un bateau
 		*/
 		static int tailleHorizontal, tailleVertical;
 		
@@ -21,7 +23,7 @@ class Grille{
 		void afficher();
 		void reset();
 		bool fini();
-		
+		char get(int x, int y);
 		friend class Joueur;
 };
 
